@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="es-CL">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>ruby.pizza — Pizza artesanal en ediciones limitadas</title>
+<meta name="description" content="Pizza de autor en ediciones limitadas. Masa de fermentación lenta, horno a leña y ingredientes del sur de Chile. Pedidos por WhatsApp.">
+<meta name="theme-color" content="#0B0B0C">
+<link rel="canonical" href="https://ruby.pizza/">
+
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="ruby.pizza">
+<meta property="og:title" content="ruby.pizza — Pizza artesanal en ediciones limitadas">
+<meta property="og:description" content="Masa de fermentación lenta, horno a 450° e ingredientes del sur. Cuatro ediciones, una obsesión.">
+<meta property="og:url" content="https://ruby.pizza/">
+<meta property="og:image" content="https://ruby.pizza/assets/img/og.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:locale" content="es_CL">
+<meta name="twitter:card" content="summary_large_image">
+
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" href="/icon-32.png" type="image/png" sizes="32x32">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="manifest" href="/site.webmanifest">
+
+<link rel="preload" as="image" href="/assets/img/hero.webp" media="(min-width: 700px)" fetchpriority="high">
+<link rel="preload" as="image" href="/assets/img/hero-mobile.webp" media="(max-width: 699px)" fetchpriority="high">
+<link rel="preload" as="font" type="font/woff2" href="/assets/fonts/rokkitt-var-latin.woff2" crossorigin>
+<link rel="preload" as="font" type="font/woff2" href="/assets/fonts/poppins-400-latin.woff2" crossorigin>
+<link rel="stylesheet" href="/assets/fonts/fonts.css">
+<link rel="stylesheet" href="/styles.css">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Restaurant",
+  "name": "ruby.pizza",
+  "servesCuisine": "Pizza artesanal",
+  "url": "https://ruby.pizza/",
+  "image": "https://ruby.pizza/assets/img/og.jpg",
+  "logo": "https://ruby.pizza/assets/logo/ruby-rojo.png",
+  "telephone": "+56973065078",
+  "sameAs": ["https://instagram.com/ruby.pizza"],
+  "hasMenu": "https://ruby.pizza/menu/menu-ruby-pizza.pdf",
+  "address": { "@type": "PostalAddress", "addressCountry": "CL" }
+}
+</script>
+</head>
+<body>
+
+<a class="skip" href="#ediciones">Saltar al menú</a>
+
+<!-- ── grain overlay ─────────────────────────────────────────── -->
+<svg class="grain" aria-hidden="true" focusable="false">
+  <filter id="grainFilter">
+    <feTurbulence type="fractalNoise" baseFrequency="0.82" numOctaves="3" stitchTiles="stitch"/>
+    <feColorMatrix type="saturate" values="0"/>
+  </filter>
+  <rect width="100%" height="100%" filter="url(#grainFilter)"/>
+</svg>
+
+<!-- ── nav ───────────────────────────────────────────────────── -->
+<header class="nav" id="nav">
+  <div class="nav__in">
+    <a class="nav__logo" href="#top" aria-label="ruby.pizza — inicio">
+      <img src="/assets/logo/ruby-blanco.png" alt="ruby.pizza" width="839" height="400" decoding="async">
+    </a>
+
+    <nav class="nav__links" aria-label="Principal">
+      <a href="#ediciones">Ediciones</a>
+      <a href="#proceso">Proceso</a>
+      <a href="#galeria">Galería</a>
+      <a href="#pedidos">Pedidos</a>
+    </nav>
+
+    <a class="btn btn--sm btn--ruby nav__cta" href="https://wa.me/56973065078?text=%C2%A1Hola%20ruby.pizza!%20Quiero%20hacer%20un%20pedido." target="_blank" rel="noopener">
+      <svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38a9.9 9.9 0 0 0 4.79 1.22h.01c5.46 0 9.91-4.45 9.91-9.91S17.5 2 12.04 2m5.8 14.17c-.24.68-1.42 1.31-1.96 1.36-.5.05-.98.23-3.3-.69-2.78-1.1-4.55-3.94-4.69-4.12-.14-.18-1.13-1.5-1.13-2.87s.72-2.03.97-2.31c.25-.28.55-.35.73-.35s.36 0 .52.01c.17.01.39-.06.61.47.23.55.78 1.9.85 2.04.07.14.11.3.02.48-.09.18-.14.3-.28.46s-.29.36-.41.48c-.14.14-.28.29-.12.57.16.28.71 1.17 1.53 1.9 1.05.94 1.94 1.23 2.22 1.37.28.14.44.12.6-.7.16-.18.69-.8.87-1.08.18-.28.37-.23.61-.14.25.09 1.58.75 1.85.88.27.14.45.21.52.32.07.12.07.66-.17 1.34"/></svg>
+      Pedir
+    </a>
+
+    <button class="burger" id="burger" aria-label="Abrir menú" aria-expanded="false" aria-controls="drawer">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<div class="drawer" id="drawer" hidden>
+  <nav aria-label="Menú móvil">
+    <a href="#ediciones"><em>01</em> Ediciones</a>
+    <a href="#proceso"><em>02</em> Proceso</a>
+    <a href="#galeria"><em>03</em> Galería</a>
+    <a href="#pedidos"><em>04</em> Pedidos</a>
+  </nav>
+  <a class="btn btn--ruby btn--block" href="https://wa.me/56973065078?text=%C2%A1Hola%20ruby.pizza!%20Quiero%20hacer%20un%20pedido." target="_blank" rel="noopener">Pedir por WhatsApp</a>
+</div>
+
+<main id="top">
+
+<!-- ── hero ──────────────────────────────────────────────────── -->
+<section class="hero">
+  <picture class="hero__bg">
+    <source media="(max-width: 699px)" srcset="/assets/img/hero-mobile.webp">
+    <img src="/assets/img/hero.webp" alt="Pizza cociéndose dentro del horno con la llama encendida" width="1800" height="1200" fetchpriority="high" decoding="async">
+  </picture>
+
+  <!-- El video se carga desde app.js: si no puede reproducirse (autoplay
+       bloqueado, ahorro de datos, movimiento reducido) queda la foto de arriba. -->
+  <video class="hero__video" id="heroVideo" muted loop playsinline preload="none" tabindex="-1" aria-hidden="true"></video>
+
+  <div class="hero__scrim"></div>
+  <div class="hero__ember"></div>
+
+  <div class="hero__in">
+    <p class="eyebrow reveal">Pizza de autor · Ediciones limitadas</p>
+
+    <h1 class="hero__logo reveal">
+      <img src="/assets/logo/ruby-blanco.png" srcset="/assets/logo/ruby-blanco.png 1x, /assets/logo/ruby-blanco@2x.png 2x" alt="ruby.pizza" width="839" height="400" fetchpriority="high">
+      <span class="sr-only">ruby.pizza — pizza artesanal en ediciones limitadas</span>
+    </h1>
+
+    <p class="hero__tag reveal">Masa de fermentación lenta, horno a fuego vivo <br>e ingredientes del sur. Cuatro ediciones, una obsesión.</p>
+
+    <div class="hero__cta reveal">
+      <a class="btn btn--ruby btn--lg" href="https://wa.me/56973065078?text=%C2%A1Hola%20ruby.pizza!%20Quiero%20hacer%20un%20pedido." target="_blank" rel="noopener">Pedir por WhatsApp</a>
+      <a class="btn btn--ghost btn--lg" href="#ediciones">Ver las ediciones</a>
+    </div>
+  </div>
+
+  <a class="hero__scroll" href="#ediciones" aria-label="Bajar a las ediciones">
+    <span class="hero__scroll-line"></span>
+  </a>
+</section>
+
+<!-- ── marquee ───────────────────────────────────────────────── -->
+<div class="checker-strip" aria-hidden="true"></div>
+<div class="marquee" aria-hidden="true">
+  <div class="marquee__track">
+    <span>Masa de fermentación lenta</span><i></i>
+    <span>Horno a fuego vivo</span><i></i>
+    <span>Mozzarella fresca</span><i></i>
+    <span>Merkén local</span><i></i>
+    <span>Tocino Llanquihue</span><i></i>
+    <span>Masa de fermentación lenta</span><i></i>
+    <span>Horno a fuego vivo</span><i></i>
+    <span>Mozzarella fresca</span><i></i>
+    <span>Merkén local</span><i></i>
+    <span>Tocino Llanquihue</span><i></i>
+  </div>
+</div>
+<div class="checker-strip" aria-hidden="true"></div>
+
+<!-- ── ediciones ─────────────────────────────────────────────── -->
+<section class="section" id="ediciones">
+  <div class="wrap">
+    <header class="s-head reveal">
+      <p class="eyebrow">El menú</p>
+      <h2 class="s-title">Ediciones</h2>
+      <p class="s-lead">Cada edición es una receta cerrada: se estudia, se ajusta y se deja quieta. Cuatro versiones, sin relleno.</p>
+    </header>
+  </div>
+
+  <ol class="editions">
+
+    <li class="ed reveal">
+      <div class="ed__media">
+        <img src="/assets/img/ed-01-origin.webp" alt="Pizza Origin con pesto de albahaca y tomates cherry confitados, recién cortada" width="900" height="1350" loading="lazy" decoding="async">
+      </div>
+      <div class="ed__body">
+        <span class="ed__num" aria-hidden="true">01</span>
+        <p class="ed__label">Edición 01</p>
+        <h3 class="ed__name">Origin</h3>
+        <p class="ed__desc">Base de salsa de tomate artesanal, queso mozzarella, pesto de albahaca y tomates cherry confitados.</p>
+        <ul class="ed__tags">
+          <li>Tomate artesanal</li><li>Mozzarella</li><li>Pesto de albahaca</li><li>Cherry confitado</li>
+        </ul>
+        <a class="ed__order" href="https://wa.me/56973065078?text=Hola%20ruby.pizza%2C%20quiero%20pedir%20la%20Edici%C3%B3n%2001%20%E2%80%94%20Origin." target="_blank" rel="noopener">Pedir Origin <span aria-hidden="true">→</span></a>
+      </div>
+    </li>
+
+    <li class="ed reveal">
+      <div class="ed__media">
+        <img src="/assets/img/ed-02-midnight-bacon.webp" alt="Pizza Midnight Bacon con tocino y cebolla caramelizada, levantando una porción" width="900" height="1350" loading="lazy" decoding="async">
+      </div>
+      <div class="ed__body">
+        <span class="ed__num" aria-hidden="true">02</span>
+        <p class="ed__label">Edición 02</p>
+        <h3 class="ed__name">Midnight Bacon</h3>
+        <p class="ed__desc">Base de salsa de tomate artesanal, queso mozzarella, aceite de oliva extra virgen, albahaca fresca, tocino Llanquihue y cebolla caramelizada.</p>
+        <ul class="ed__tags">
+          <li>Tocino Llanquihue</li><li>Cebolla caramelizada</li><li>Albahaca fresca</li><li>Oliva extra virgen</li>
+        </ul>
+        <a class="ed__order" href="https://wa.me/56973065078?text=Hola%20ruby.pizza%2C%20quiero%20pedir%20la%20Edici%C3%B3n%2002%20%E2%80%94%20Midnight%20Bacon." target="_blank" rel="noopener">Pedir Midnight Bacon <span aria-hidden="true">→</span></a>
+      </div>
+    </li>
+
+    <li class="ed reveal">
+      <div class="ed__media">
+        <img src="/assets/img/ed-03-red-smoke.webp" alt="Pizza Red Smoke recibiendo un hilo de miel infusionada con merkén" width="900" height="1350" loading="lazy" decoding="async">
+      </div>
+      <div class="ed__body">
+        <span class="ed__num" aria-hidden="true">03</span>
+        <p class="ed__label">Edición 03</p>
+        <h3 class="ed__name">Red Smoke</h3>
+        <p class="ed__desc">Base de salsa de tomate artesanal, queso mozzarella, pepperoni americano, miel de la zona infusionada con merkén local.</p>
+        <ul class="ed__tags">
+          <li>Pepperoni americano</li><li>Miel de la zona</li><li>Merkén local</li><li>Dulce · picante</li>
+        </ul>
+        <a class="ed__order" href="https://wa.me/56973065078?text=Hola%20ruby.pizza%2C%20quiero%20pedir%20la%20Edici%C3%B3n%2003%20%E2%80%94%20Red%20Smoke." target="_blank" rel="noopener">Pedir Red Smoke <span aria-hidden="true">→</span></a>
+      </div>
+    </li>
+
+    <li class="ed reveal">
+      <div class="ed__media">
+        <img src="/assets/img/ed-04-pepperoni.webp" alt="Pizza Pepperoni entera sobre pizarra, cortándose con tijera" width="900" height="1350" loading="lazy" decoding="async">
+      </div>
+      <div class="ed__body">
+        <span class="ed__num" aria-hidden="true">04</span>
+        <p class="ed__label">Edición 04</p>
+        <h3 class="ed__name">Pepperoni</h3>
+        <p class="ed__desc">Base de salsa de tomate artesanal, queso mozzarella, pepperoni americano, especias locales.</p>
+        <ul class="ed__tags">
+          <li>Pepperoni americano</li><li>Mozzarella</li><li>Especias locales</li><li>El clásico</li>
+        </ul>
+        <a class="ed__order" href="https://wa.me/56973065078?text=Hola%20ruby.pizza%2C%20quiero%20pedir%20la%20Edici%C3%B3n%2004%20%E2%80%94%20Pepperoni." target="_blank" rel="noopener">Pedir Pepperoni <span aria-hidden="true">→</span></a>
+      </div>
+    </li>
+
+  </ol>
+
+  <div class="wrap">
+    <div class="menu-dl reveal">
+      <div>
+        <h3>Menú completo en PDF</h3>
+        <p>Las cuatro ediciones en una página, lista para imprimir o mandar por WhatsApp.</p>
+      </div>
+      <a class="btn btn--bone" href="/menu/menu-ruby-pizza.pdf" target="_blank" rel="noopener" download>
+        <svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v11m0 0 4-4m-4 4-4-4M4 19h16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        Descargar menú
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ── proceso ───────────────────────────────────────────────── -->
+<section class="section section--alt" id="proceso">
+  <div class="wrap">
+    <header class="s-head reveal">
+      <p class="eyebrow">Cómo se hace</p>
+      <h2 class="s-title">El proceso</h2>
+      <p class="s-lead">Nada aquí es rápido. La masa manda y nosotros la seguimos.</p>
+    </header>
+
+    <div class="proc">
+      <article class="proc__item reveal">
+        <div class="proc__img"><img src="/assets/img/proceso-1.webp" alt="Manos presionando la masa sobre el mesón enharinado" width="800" height="1200" loading="lazy" decoding="async"></div>
+        <span class="proc__step">01</span>
+        <h3>Fermentación lenta</h3>
+        <p>La masa descansa el tiempo que necesita. Ese reposo es lo que le da el aire, el borde y el sabor que no se consigue apurando.</p>
+      </article>
+
+      <article class="proc__item reveal">
+        <div class="proc__img"><img src="/assets/img/proceso-2.webp" alt="Masa estirada a mano contra la luz" width="800" height="1200" loading="lazy" decoding="async"></div>
+        <span class="proc__step">02</span>
+        <h3>Estirada a mano</h3>
+        <p>Sin uslero ni máquina. Se abre con los dedos para no aplastar el gas del borde: por eso cada pizza sale distinta.</p>
+      </article>
+
+      <article class="proc__item reveal">
+        <div class="proc__img"><img src="/assets/img/proceso-3.webp" alt="Masa suspendida en el aire antes de ir al horno" width="800" height="1200" loading="lazy" decoding="async"></div>
+        <span class="proc__step">03</span>
+        <h3>Fuego vivo</h3>
+        <p>Al horno a temperatura alta, unos pocos minutos. Sale con el leopardeado justo: borde inflado, base crujiente, centro tierno.</p>
+      </article>
+    </div>
+  </div>
+
+  <div class="quote-band">
+    <div class="wrap">
+      <blockquote class="reveal">
+        <p>“Cuatro ediciones. Ninguna de relleno.”</p>
+        <cite>ruby.pizza</cite>
+      </blockquote>
+    </div>
+  </div>
+</section>
+
+<!-- ── galería ───────────────────────────────────────────────── -->
+<section class="section" id="galeria">
+  <div class="wrap">
+    <header class="s-head reveal">
+      <p class="eyebrow">Detrás del mesón</p>
+      <h2 class="s-title">Galería</h2>
+      <p class="s-lead">Servicio real, sin estilismo. Toca cualquier foto para verla en grande.</p>
+    </header>
+  </div>
+
+  <div class="gallery" id="gallery">
+    <button class="gal" type="button" data-full="/assets/img/g-01.webp"><img src="/assets/img/g-01.webp" alt="Montaje de la pizza sobre la pala" width="760" height="1140" loading="lazy" decoding="async"></button>
+    <button class="gal" type="button" data-full="/assets/img/g-02.webp"><img src="/assets/img/g-02.webp" alt="Colocando los ingredientes con pinzas" width="760" height="1140" loading="lazy" decoding="async"></button>
+    <button class="gal" type="button" data-full="/assets/img/g-03.webp"><img src="/assets/img/g-03.webp" alt="Pizza recién salida del horno sobre papel damero" width="760" height="1140" loading="lazy" decoding="async"></button>
+    <button class="gal" type="button" data-full="/assets/img/g-04.webp"><img src="/assets/img/g-04.webp" alt="Pizza cortada en porciones sobre la tabla" width="760" height="1140" loading="lazy" decoding="async"></button>
+    <button class="gal" type="button" data-full="/assets/img/g-05.webp"><img src="/assets/img/g-05.webp" alt="Porción servida en plato de papel" width="760" height="1140" loading="lazy" decoding="async"></button>
+    <button class="gal" type="button" data-full="/assets/img/g-06.webp"><img src="/assets/img/g-06.webp" alt="Porción de pizza entregada en mano" width="760" height="1140" loading="lazy" decoding="async"></button>
+    <button class="gal" type="button" data-full="/assets/img/g-07.webp"><img src="/assets/img/g-07.webp" alt="Logo ruby.pizza bordado en la manga del uniforme" width="760" height="1140" loading="lazy" decoding="async"></button>
+    <button class="gal" type="button" data-full="/assets/img/g-08.webp"><img src="/assets/img/g-08.webp" alt="El pizzero trabajando en la estación" width="760" height="1140" loading="lazy" decoding="async"></button>
+    <button class="gal" type="button" data-full="/assets/img/g-09.webp"><img src="/assets/img/g-09.webp" alt="Cortando la pizza sobre la tabla de madera" width="760" height="1140" loading="lazy" decoding="async"></button>
+    <button class="gal" type="button" data-full="/assets/img/g-10.webp"><img src="/assets/img/g-10.webp" alt="Pizza dentro del horno con la llama encendida" width="760" height="1140" loading="lazy" decoding="async"></button>
+    <button class="gal" type="button" data-full="/assets/img/g-11.webp"><img src="/assets/img/g-11.webp" alt="Pepperoni cortado con tijera de pizza" width="760" height="1140" loading="lazy" decoding="async"></button>
+    <button class="gal" type="button" data-full="/assets/img/g-12.webp"><img src="/assets/img/g-12.webp" alt="Masa trabajada sobre el mesón enharinado" width="760" height="1140" loading="lazy" decoding="async"></button>
+  </div>
+</section>
+
+<!-- ── pedidos ───────────────────────────────────────────────── -->
+<section class="section section--order" id="pedidos">
+  <div class="wrap">
+    <div class="order">
+      <div class="order__copy reveal">
+        <p class="eyebrow">Pedidos</p>
+        <h2 class="s-title">Se pide por<br>WhatsApp</h2>
+        <p class="s-lead">Escríbenos con la edición que quieres y la cantidad. Te confirmamos disponibilidad y horario al tiro.</p>
+
+        <div class="order__actions">
+          <a class="btn btn--ruby btn--lg" href="https://wa.me/56973065078?text=%C2%A1Hola%20ruby.pizza!%20Quiero%20hacer%20un%20pedido." target="_blank" rel="noopener">
+            <svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38a9.9 9.9 0 0 0 4.79 1.22h.01c5.46 0 9.91-4.45 9.91-9.91S17.5 2 12.04 2m5.8 14.17c-.24.68-1.42 1.31-1.96 1.36-.5.05-.98.23-3.3-.69-2.78-1.1-4.55-3.94-4.69-4.12-.14-.18-1.13-1.5-1.13-2.87s.72-2.03.97-2.31c.25-.28.55-.35.73-.35s.36 0 .52.01c.17.01.39-.06.61.47.23.55.78 1.9.85 2.04.07.14.11.3.02.48-.09.18-.14.3-.28.46s-.29.36-.41.48c-.14.14-.28.29-.12.57.16.28.71 1.17 1.53 1.9 1.05.94 1.94 1.23 2.22 1.37.28.14.44.12.6-.7.16-.18.69-.8.87-1.08.18-.28.37-.23.61-.14.25.09 1.58.75 1.85.88.27.14.45.21.52.32.07.12.07.66-.17 1.34"/></svg>
+            +56 9 7306 5078
+          </a>
+          <a class="btn btn--ghost btn--lg" href="https://instagram.com/ruby.pizza" target="_blank" rel="noopener">
+            <svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="1.9" d="M7 2.8h10A4.2 4.2 0 0 1 21.2 7v10a4.2 4.2 0 0 1-4.2 4.2H7A4.2 4.2 0 0 1 2.8 17V7A4.2 4.2 0 0 1 7 2.8Z"/><circle cx="12" cy="12" r="4.1" fill="none" stroke="currentColor" stroke-width="1.9"/><circle cx="17.4" cy="6.6" r="1.3"/></svg>
+            @ruby.pizza
+          </a>
+        </div>
+
+        <dl class="order__meta">
+          <div><dt>WhatsApp</dt><dd><a href="https://wa.me/56973065078" target="_blank" rel="noopener">+56 9 7306 5078</a></dd></div>
+          <div><dt>Instagram</dt><dd><a href="https://instagram.com/ruby.pizza" target="_blank" rel="noopener">@ruby.pizza</a></dd></div>
+          <div><dt>Web</dt><dd><a href="https://ruby.pizza">ruby.pizza</a></dd></div>
+        </dl>
+      </div>
+
+      <div class="order__media reveal">
+        <img src="/assets/img/detalle-marca.webp" alt="Logo ruby.pizza bordado en el uniforme" width="900" height="1350" loading="lazy" decoding="async">
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ── footer ────────────────────────────────────────────────── -->
+<div class="checker-strip" aria-hidden="true"></div>
+<footer class="foot">
+  <div class="wrap foot__in">
+    <a class="foot__logo" href="#top" aria-label="ruby.pizza — volver arriba">
+      <img src="/assets/logo/ruby-rojo-oscuro.png" srcset="/assets/logo/ruby-rojo-oscuro.png 1x, /assets/logo/ruby-rojo-oscuro@2x.png 2x" alt="ruby.pizza" width="839" height="400" loading="lazy" decoding="async">
+    </a>
+
+    <nav class="foot__nav" aria-label="Pie de página">
+      <a href="#ediciones">Ediciones</a>
+      <a href="#proceso">Proceso</a>
+      <a href="#galeria">Galería</a>
+      <a href="/menu/menu-ruby-pizza.pdf" target="_blank" rel="noopener">Menú PDF</a>
+    </nav>
+
+    <div class="foot__social">
+      <a href="https://instagram.com/ruby.pizza" target="_blank" rel="noopener" aria-label="Instagram @ruby.pizza">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="1.9" d="M7 2.8h10A4.2 4.2 0 0 1 21.2 7v10a4.2 4.2 0 0 1-4.2 4.2H7A4.2 4.2 0 0 1 2.8 17V7A4.2 4.2 0 0 1 7 2.8Z"/><circle cx="12" cy="12" r="4.1" fill="none" stroke="currentColor" stroke-width="1.9"/><circle cx="17.4" cy="6.6" r="1.3"/></svg>
+      </a>
+      <a href="https://wa.me/56973065078" target="_blank" rel="noopener" aria-label="WhatsApp +56 9 7306 5078">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38a9.9 9.9 0 0 0 4.79 1.22h.01c5.46 0 9.91-4.45 9.91-9.91S17.5 2 12.04 2m5.8 14.17c-.24.68-1.42 1.31-1.96 1.36-.5.05-.98.23-3.3-.69-2.78-1.1-4.55-3.94-4.69-4.12-.14-.18-1.13-1.5-1.13-2.87s.72-2.03.97-2.31c.25-.28.55-.35.73-.35s.36 0 .52.01c.17.01.39-.06.61.47.23.55.78 1.9.85 2.04.07.14.11.3.02.48-.09.18-.14.3-.28.46s-.29.36-.41.48c-.14.14-.28.29-.12.57.16.28.71 1.17 1.53 1.9 1.05.94 1.94 1.23 2.22 1.37.28.14.44.12.6-.7.16-.18.69-.8.87-1.08.18-.28.37-.23.61-.14.25.09 1.58.75 1.85.88.27.14.45.21.52.32.07.12.07.66-.17 1.34"/></svg>
+      </a>
+    </div>
+
+    <p class="foot__legal">© <span id="year">2026</span> ruby.pizza · Pizza artesanal en ediciones limitadas</p>
+  </div>
+</footer>
+
+<!-- ── floating whatsapp ─────────────────────────────────────── -->
+<a class="fab" id="fab" href="https://wa.me/56973065078?text=%C2%A1Hola%20ruby.pizza!%20Quiero%20hacer%20un%20pedido." target="_blank" rel="noopener" aria-label="Pedir por WhatsApp">
+  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38a9.9 9.9 0 0 0 4.79 1.22h.01c5.46 0 9.91-4.45 9.91-9.91S17.5 2 12.04 2m5.8 14.17c-.24.68-1.42 1.31-1.96 1.36-.5.05-.98.23-3.3-.69-2.78-1.1-4.55-3.94-4.69-4.12-.14-.18-1.13-1.5-1.13-2.87s.72-2.03.97-2.31c.25-.28.55-.35.73-.35s.36 0 .52.01c.17.01.39-.06.61.47.23.55.78 1.9.85 2.04.07.14.11.3.02.48-.09.18-.14.3-.28.46s-.29.36-.41.48c-.14.14-.28.29-.12.57.16.28.71 1.17 1.53 1.9 1.05.94 1.94 1.23 2.22 1.37.28.14.44.12.6-.7.16-.18.69-.8.87-1.08.18-.28.37-.23.61-.14.25.09 1.58.75 1.85.88.27.14.45.21.52.32.07.12.07.66-.17 1.34"/></svg>
+</a>
+
+<!-- ── lightbox ──────────────────────────────────────────────── -->
+<dialog class="lb" id="lightbox" aria-label="Galería ampliada">
+  <button class="lb__x" id="lbClose" aria-label="Cerrar">&times;</button>
+  <button class="lb__nav lb__nav--prev" id="lbPrev" aria-label="Anterior">&#8249;</button>
+  <img id="lbImg" alt="">
+  <button class="lb__nav lb__nav--next" id="lbNext" aria-label="Siguiente">&#8250;</button>
+</dialog>
+
+<script src="/app.js" defer></script>
+</body>
+</html>

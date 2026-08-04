@@ -1,0 +1,14 @@
+{
+  "name": "ruby-pizza",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Sitio de ruby.pizza (estático) y generador de la carta en PDF.",
+  "type": "module",
+  "scripts": {
+    "dev": "npx -y serve -l 4321 site",
+    "menu": "node build-menu.mjs"
+  },
+  "devDependencies": {
+    "puppeteer-core": "^23.0.0"
+  }
+}

@@ -1,0 +1,10 @@
+node_modules/
+.vercel/
+.DS_Store
+
+# material original pesado (no se despliega)
+*.rar
+*.mp4
+
+# ...salvo los videos ya comprimidos del hero, que sí se despliegan
+!site/assets/video/*.mp4

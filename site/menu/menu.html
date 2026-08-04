@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="es-CL">
+<head>
+<meta charset="utf-8">
+<title>ruby.pizza — Menú</title>
+<link rel="stylesheet" href="/assets/fonts/fonts.css">
+<style>
+  /* ══════════════════════════════════════════════════════════
+     Carta ruby.pizza — A4, misma estética que el sitio.
+     Se exporta con: node build-menu.mjs
+     ══════════════════════════════════════════════════════════ */
+
+  @page { size: A4; margin: 0; }
+
+  :root{
+    --ruby:#A6192E;
+    --ruby-hi:#C8243C;
+    --ink:#0B0B0C;
+    --bone:#F2EFE9;
+    --bone-2:rgba(242,239,233,.68);
+    --bone-3:rgba(242,239,233,.42);
+    --line:rgba(242,239,233,.15);
+    --display:'Rokkitt',Georgia,serif;
+    --sans:'Poppins',system-ui,sans-serif;
+  }
+
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+
+  html,body{
+    background:var(--ink);
+    -webkit-print-color-adjust:exact;
+    print-color-adjust:exact;
+  }
+
+  .page{
+    width:210mm;height:297mm;
+    background:var(--ink);
+    color:var(--bone);
+    font-family:var(--sans);
+    font-weight:300;
+    display:flex;flex-direction:column;
+    overflow:hidden;
+    position:relative;
+  }
+
+  /* Resplandor del horno, apenas perceptible en la esquina superior. */
+  .glow{
+    position:absolute;
+    top:-14%;right:-18%;width:85%;height:62%;
+    background:radial-gradient(circle, rgba(232,131,58,.26) 0%, rgba(166,25,46,.17) 40%, transparent 68%);
+    pointer-events:none;z-index:0;
+  }
+
+  /* damero: el papel de las fotos */
+  .checker{
+    height:5mm;flex:none;
+    background:repeating-conic-gradient(var(--bone) 0% 25%, var(--ink) 0% 50%) 0 0 / 5mm 5mm;
+  }
+
+  .body{
+    flex:1;
+    padding:9mm 15mm 7mm;
+    display:flex;flex-direction:column;
+    position:relative;z-index:1;
+  }
+
+  /* ── encabezado ──────────────────────────────────────────── */
+  .eyebrow{
+    font-size:6.6pt;font-weight:500;
+    letter-spacing:.3em;text-transform:uppercase;
+    color:var(--ruby-hi);
+  }
+
+  .title{
+    font-family:var(--display);font-weight:800;
+    font-size:52pt;line-height:.9;letter-spacing:-.015em;
+    margin-top:2mm;
+  }
+
+  .sub{
+    font-size:8.2pt;color:var(--bone-2);
+    margin-top:3mm;max-width:105mm;line-height:1.55;
+  }
+
+  .rule{height:1px;background:var(--line);margin:7mm 0 0}
+
+  /* ── ediciones ───────────────────────────────────────────── */
+  .items{flex:1;display:flex;flex-direction:column;justify-content:space-evenly}
+
+  .item{
+    display:grid;
+    grid-template-columns:26mm 1fr;
+    gap:7mm;
+    align-items:center;
+    padding:4mm 0;
+    border-bottom:1px solid var(--line);
+  }
+  .item:last-child{border-bottom:0}
+
+  .item__img{
+    width:26mm;height:33mm;
+    overflow:hidden;border-radius:1mm;
+    background:#1A1A1D;
+  }
+  .item__img img{width:100%;height:100%;object-fit:cover;display:block}
+
+  .item__label{
+    font-size:6.4pt;font-weight:500;
+    letter-spacing:.26em;text-transform:uppercase;
+    color:var(--ruby-hi);
+  }
+
+  .item__name{
+    font-family:var(--display);font-weight:800;
+    font-size:23pt;line-height:1;letter-spacing:-.01em;
+    margin-top:1.2mm;
+  }
+
+  .item__desc{
+    font-size:8.4pt;line-height:1.55;
+    color:var(--bone-2);
+    margin-top:2mm;max-width:118mm;
+  }
+
+  /* ── pie ─────────────────────────────────────────────────── */
+  .foot{
+    flex:none;padding-top:6mm;
+    border-top:1px solid var(--line);
+    display:flex;align-items:flex-end;justify-content:space-between;gap:8mm;
+  }
+  .foot__logo img{height:13mm;width:auto;display:block}
+
+  .foot__contact{
+    text-align:right;
+    font-size:8pt;line-height:1.75;color:var(--bone-2);
+  }
+  .foot__contact strong{
+    display:block;
+    font-family:var(--sans);font-weight:500;
+    font-size:6.4pt;letter-spacing:.26em;text-transform:uppercase;
+    color:var(--ruby-hi);margin-bottom:1.5mm;
+  }
+</style>
+</head>
+<body>
+
+<div class="page">
+  <div class="glow" aria-hidden="true"></div>
+  <div class="checker"></div>
+
+  <div class="body">
+    <header>
+      <p class="eyebrow">Pizza de autor · Ediciones limitadas</p>
+      <h1 class="title">Menú</h1>
+      <p class="sub">Masa de fermentación lenta, horno a fuego vivo e ingredientes del sur. Cada edición es una receta cerrada.</p>
+      <div class="rule"></div>
+    </header>
+
+    <ol class="items">
+      <li class="item">
+        <div class="item__img"><img src="/assets/img/menu-01.jpg" alt=""></div>
+        <div>
+          <p class="item__label">Edición 01</p>
+          <h2 class="item__name">Origin</h2>
+          <p class="item__desc">Base de salsa de tomate artesanal, queso mozzarella, pesto de albahaca y tomates cherry confitados.</p>
+        </div>
+      </li>
+
+      <li class="item">
+        <div class="item__img"><img src="/assets/img/menu-02.jpg" alt=""></div>
+        <div>
+          <p class="item__label">Edición 02</p>
+          <h2 class="item__name">Midnight Bacon</h2>
+          <p class="item__desc">Base de salsa de tomate artesanal, queso mozzarella, aceite de oliva extra virgen, albahaca fresca, tocino Llanquihue y cebolla caramelizada.</p>
+        </div>
+      </li>
+
+      <li class="item">
+        <div class="item__img"><img src="/assets/img/menu-03.jpg" alt=""></div>
+        <div>
+          <p class="item__label">Edición 03</p>
+          <h2 class="item__name">Red Smoke</h2>
+          <p class="item__desc">Base de salsa de tomate artesanal, queso mozzarella, pepperoni americano, miel de la zona infusionada con merkén local.</p>
+        </div>
+      </li>
+
+      <li class="item">
+        <div class="item__img"><img src="/assets/img/menu-04.jpg" alt=""></div>
+        <div>
+          <p class="item__label">Edición 04</p>
+          <h2 class="item__name">Pepperoni</h2>
+          <p class="item__desc">Base de salsa de tomate artesanal, queso mozzarella, pepperoni americano, especias locales.</p>
+        </div>
+      </li>
+    </ol>
+
+    <footer class="foot">
+      <div class="foot__logo">
+        <img src="/assets/logo/ruby-blanco-print.png" alt="ruby.pizza">
+      </div>
+      <div class="foot__contact">
+        <strong>Pedidos</strong>
+        WhatsApp +56 9 7306 5078<br>
+        @ruby.pizza · ruby.pizza
+      </div>
+    </footer>
+  </div>
+
+  <div class="checker"></div>
+</div>
+
+</body>
+</html>
