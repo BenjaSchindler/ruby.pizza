@@ -5,11 +5,11 @@ y los logos de `Ruby imagenes/`.
 
 ```
 ruby.pizza/
-├─ site/                    ← esto es lo que se despliega
+├─ vercel.json              config del despliegue (tiene que estar en la raíz)
+├─ site/                    ← esto es lo que se sirve (outputDirectory)
 │  ├─ index.html
 │  ├─ styles.css
 │  ├─ app.js
-│  ├─ vercel.json
 │  ├─ assets/{img,logo,fonts,video}/
 │  └─ menu/
 │     ├─ menu.html               fuente de la carta
@@ -21,27 +21,31 @@ ruby.pizza/
 
 ## Desplegar en Vercel
 
-El sitio es HTML/CSS/JS plano: **no hay build**. En Vercel:
+**No hay que configurar nada**: se importa el repo y listo. El sitio es
+HTML/CSS/JS plano, sin build.
 
-| Ajuste | Valor |
-| --- | --- |
-| Framework Preset | **Other** |
-| Root Directory | **`site`** |
-| Build Command | *(vacío)* |
-| Output Directory | *(vacío)* |
+El `vercel.json` de la raíz se encarga de todo:
 
-Poner `site` como Root Directory es lo importante: deja fuera del despliegue el
-`.rar` (17 MB) y el video (61 MB) que están en la raíz.
+- `outputDirectory: "site"` — el `index.html` está en `site/`, no en la raíz.
+  Sin esto Vercel busca en la raíz, no encuentra nada y **responde 404**.
+- `buildCommand` e `installCommand` vacíos — no hay nada que compilar, y así no
+  intenta instalar `puppeteer-core`, que solo sirve para generar el PDF en local.
+- `cleanUrls`, cache inmutable de un año para `/assets/*` y cabeceras de
+  seguridad básicas.
+
+> El `vercel.json` tiene que estar **en la raíz del repo**. Vercel solo lee el
+> que está en el Root Directory del proyecto: si se mueve a `site/` mientras el
+> Root Directory sea la raíz, se ignora entero y vuelve el 404.
 
 Desde la terminal:
 
 ```bash
-cd site && vercel        # preview
-cd site && vercel --prod # producción
+vercel        # preview
+vercel --prod # producción
 ```
 
-`site/vercel.json` ya trae `cleanUrls`, cache inmutable de un año para
-`/assets/*` y cabeceras de seguridad básicas.
+El `.rar` (17 MB) y el video original (61 MB) no llegan al despliegue: están en
+`.gitignore`, así que ni siquiera están en el repo.
 
 Después de conectar el dominio, revisar que `ruby.pizza` sea el dominio
 principal: las URLs canónicas, el sitemap y las etiquetas Open Graph apuntan ahí.

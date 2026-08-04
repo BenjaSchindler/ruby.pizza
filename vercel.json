@@ -1,7 +1,17 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
+
+  "//": "El sitio vive en site/, no en la raíz. outputDirectory se lo dice a Vercel para que funcione con la configuración por defecto, sin tener que tocar Root Directory en el panel.",
+  "outputDirectory": "site",
+
+  "//build": "No hay build ni dependencias que instalar: es HTML/CSS/JS plano. En vacío, Vercel se salta ambos pasos (si no, intentaría instalar puppeteer-core del package.json, que solo sirve para generar el PDF en local).",
+  "buildCommand": "",
+  "installCommand": "",
+  "framework": null,
+
   "cleanUrls": true,
   "trailingSlash": false,
+
   "headers": [
     {
       "source": "/assets/(.*)",
