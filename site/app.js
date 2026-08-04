@@ -58,33 +58,30 @@
     }
   });
 
-  /* ── video del hero ──────────────────────────────────────── */
-  const heroVideo = $('#heroVideo');
+  /* ── video del horno (paso 03 del proceso) ───────────────── */
+  const ovenVideo = $('.proc__video');
+  const saveData  = navigator.connection?.saveData === true;
 
-  if (heroVideo) {
-    const saveData = navigator.connection?.saveData === true;
+  // Con movimiento reducido o ahorro de datos no se descarga nada:
+  // la foto del paso ya está puesta y alcanza.
+  if (ovenVideo && !reduced && !saveData) {
+    ovenVideo.addEventListener('canplay', () => {
+      ovenVideo.classList.add('is-on');
+    }, { once: true });
 
-    // Con movimiento reducido o ahorro de datos ni siquiera se descarga:
-    // la foto del hero ya está puesta y alcanza.
-    if (!reduced && !saveData) {
-      heroVideo.src = matchMedia('(max-width: 699px)').matches
-        ? '/assets/video/hero-mobile.mp4'
-        : '/assets/video/hero.mp4';
+    // Si el navegador bloquea el autoplay, .play() rechaza y queda la foto.
+    const play = () => {
+      if (!ovenVideo.src) ovenVideo.src = ovenVideo.dataset.src;
+      ovenVideo.play().catch(() => {});
+    };
 
-      heroVideo.addEventListener('canplay', () => {
-        heroVideo.classList.add('is-on');
-      }, { once: true });
-
-      // Si el navegador bloquea el autoplay, .play() rechaza y queda la foto.
-      const play = () => heroVideo.play().catch(() => {});
+    if ('IntersectionObserver' in window) {
+      // se pide recién al acercarse, y se pausa al salir de pantalla
+      new IntersectionObserver((entries) => {
+        entries.forEach((e) => (e.isIntersecting ? play() : ovenVideo.pause()));
+      }, { rootMargin: '250px 0px', threshold: 0.1 }).observe(ovenVideo);
+    } else {
       play();
-
-      // No gastar CPU ni batería mientras el hero está fuera de pantalla.
-      if ('IntersectionObserver' in window) {
-        new IntersectionObserver((entries) => {
-          entries.forEach((e) => (e.isIntersecting ? play() : heroVideo.pause()));
-        }, { threshold: 0.01 }).observe(heroVideo);
-      }
     }
   }
 

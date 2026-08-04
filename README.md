@@ -96,37 +96,40 @@ receta hay que tocar los dos archivos y regenerar el PDF.
 **Falta definir:** precios, horario de atención y dirección/zona de reparto. No
 venían en el menú original, así que no aparecen en ninguna parte todavía.
 
-## Video del hero
+## Video del horno
 
-`site/assets/video/` sale del MP4 original de WhatsApp (1080×1920 vertical, 60 fps,
-61 MB) recomprimido a H.264:
+`site/assets/video/horno.mp4` (608×1080, 970 KB) es el MP4 original de WhatsApp
+—1080×1920 vertical, 60 fps, 61 MB— recomprimido a H.264.
 
-| Archivo | Formato | Peso |
-| --- | --- | --- |
-| `hero.mp4` | 1280×720, recorte central 16:9 | 2,2 MB |
-| `hero-mobile.mp4` | 608×1080, vertical original | 970 KB |
+Va en **el paso 03 del proceso, "Fuego vivo"**, no en el hero: el hero se ve
+mejor con la foto del horno con la llama azul, y ahí el paso 03 mostraba masa
+estirándose aunque el texto habla del horno.
 
-`app.js` elige cuál cargar según el ancho de pantalla, así que **solo se descarga
-uno**. La foto del hero queda debajo haciendo de póster: si el navegador bloquea
-el autoplay, el usuario tiene ahorro de datos activado o pide movimiento
-reducido, no se pide un solo byte de video y se queda la foto. El video también
-se pausa cuando el hero sale de pantalla.
+`proceso-3.webp` es un fotograma del propio video y hace de póster: se ve al
+instante y se queda puesto si el navegador bloquea el autoplay, el usuario tiene
+ahorro de datos o pide movimiento reducido — en esos casos no se descarga un solo
+byte de video. Además solo se pide cuando la tarjeta se acerca a pantalla, y se
+pausa al salir.
 
-Va bastante oscurecido por CSS (`filter: brightness(.58)`) porque el material
-original está muy quemado de naranjo y si no el logotipo no se lee encima.
-
-Para regenerarlo con otro recorte hace falta `ffmpeg`:
+Para regenerarlo hace falta `ffmpeg`:
 
 ```bash
 ffmpeg -i "WhatsApp Video ....mp4" \
-  -vf "crop=1080:608:0:540,scale=1280:720,setsar=1,fps=30" -an \
-  -c:v libx264 -profile:v high -preset slow -crf 27 \
-  -pix_fmt yuv420p -movflags +faststart site/assets/video/hero.mp4
+  -vf "scale=608:1080,setsar=1,fps=30" -an \
+  -c:v libx264 -profile:v high -preset slow -crf 28 \
+  -pix_fmt yuv420p -movflags +faststart site/assets/video/horno.mp4
+
+# y el póster, desde el propio video
+ffmpeg -ss 5.4 -i site/assets/video/horno.mp4 -frames:v 1 -q:v 3 /tmp/poster.jpg
+convert /tmp/poster.jpg -resize 800x -quality 80 site/assets/img/proceso-3.webp
 ```
 
-El `crop` toma una franja de 608 px de alto a partir del píxel 540: es donde
-queda la pizza. El `setsar=1` importa — el original trae un aspecto de píxel
-1215:1216 que si no deja el video estirado un 0,1%.
+El `setsar=1` importa: el original trae un aspecto de píxel 1215:1216 que si no
+deja el video estirado un 0,1%.
+
+Si alguna vez se quiere una versión horizontal (por ejemplo para una banda ancha
+entre secciones), el recorte que funciona es
+`crop=1080:608:0:540,scale=1280:720` — toma la franja donde queda la pizza.
 
 ## Fotos
 

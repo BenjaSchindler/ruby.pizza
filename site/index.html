@@ -103,11 +103,6 @@
     <source media="(max-width: 699px)" srcset="/assets/img/hero-mobile.webp">
     <img src="/assets/img/hero.webp" alt="Pizza cociéndose dentro del horno con la llama encendida" width="1800" height="1200" fetchpriority="high" decoding="async">
   </picture>
-
-  <!-- El video se carga desde app.js: si no puede reproducirse (autoplay
-       bloqueado, ahorro de datos, movimiento reducido) queda la foto de arriba. -->
-  <video class="hero__video" id="heroVideo" muted loop playsinline preload="none" tabindex="-1" aria-hidden="true"></video>
-
   <div class="hero__scrim"></div>
   <div class="hero__ember"></div>
 
@@ -267,7 +262,13 @@
       </article>
 
       <article class="proc__item reveal">
-        <div class="proc__img"><img src="/assets/img/proceso-3.webp" alt="Masa suspendida en el aire antes de ir al horno" width="800" height="1200" loading="lazy" decoding="async"></div>
+        <div class="proc__img">
+          <!-- La foto hace de póster. app.js carga el video recién cuando esta
+               tarjeta se acerca a pantalla, y no lo pide si el navegador bloquea
+               el autoplay, hay ahorro de datos o se pide movimiento reducido. -->
+          <img src="/assets/img/proceso-3.webp" alt="Pizza cociéndose en el horno entre las llamas" width="800" height="1421" loading="lazy" decoding="async">
+          <video class="proc__video" data-src="/assets/video/horno.mp4" muted loop playsinline preload="none" tabindex="-1" aria-hidden="true"></video>
+        </div>
         <span class="proc__step">03</span>
         <h3>Fuego vivo</h3>
         <p>Al horno a temperatura alta, unos pocos minutos. Sale con el leopardeado justo: borde inflado, base crujiente, centro tierno.</p>
